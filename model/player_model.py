@@ -3,5 +3,5 @@ from dataclasses import dataclass
 
 @dataclass
 class Player:
-    playerName: str
+    name: str
     id: int = None
