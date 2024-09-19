@@ -4,7 +4,7 @@ from model.team_model import *
 from repository.database_repository import get_db_connection
 
 
-def create_player(team: Team) -> int:
+def create_team(team: Team) -> int:
     with get_db_connection() as connection, connection.cursor() as cursor:
         cursor.execute("""
         INSERT INTO teams(name)

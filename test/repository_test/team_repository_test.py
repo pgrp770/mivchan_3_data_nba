@@ -17,7 +17,7 @@ def setup_database():
     conn.close()
 
 
-def test_create_answer():
-    new_player = Team("test")
-    new_id = create_player(new_player)
+def test_create_team():
+    new_team = Team("test")
+    new_id = create_team(new_team)
     assert get_team_by_id(new_id).id == new_id

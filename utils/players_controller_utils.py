@@ -19,8 +19,10 @@ def filter_by_season(season, li):
         )
     return li
 
+
 def get_ppg(player_position, player_points):
     pass
+
 
 def filter_players_by_season_and_position(position: str, season: str or None = None) -> List[Player]:
     all_player = get_all_players()
@@ -37,4 +39,3 @@ def filter_players_by_season_and_position(position: str, season: str or None = N
     )
 
     return season_player_filter
-
