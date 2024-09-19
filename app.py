@@ -10,5 +10,7 @@ if __name__ == "__main__":
     # drop_tables_players_and_season_players()
     # create_tables_players_and_season_players()
     # seed_players_season_players()
+    drop_tables_team_and_player_team()
+    create_tables_team_and_player_team()
     app.register_blueprint(players_blueprint, url_prefix="/api/players")
     app.run(debug=True)

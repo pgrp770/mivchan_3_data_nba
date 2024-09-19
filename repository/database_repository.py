@@ -18,6 +18,31 @@ def create_player_table():
         connection.commit()
 
 
+def create_teams_table():
+    with get_db_connection() as connection, connection.cursor() as cursor:
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS teams (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(100) NOT NULL
+        )   
+        """)
+        connection.commit()
+
+
+def create_player_team_table():
+    with get_db_connection() as connection, connection.cursor() as cursor:
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS player_teams (
+            id SERIAL PRIMARY KEY,
+            player_id INT NOT NULL,
+            team_id INT NOT NULL,
+            FOREIGN KEY(player_id) REFERENCES players(id) ON DELETE CASCADE,
+            FOREIGN KEY(team_id) REFERENCES teams(id) ON DELETE CASCADE
+        )   
+        """)
+        connection.commit()
+
+
 def create_season_player_table():
     with get_db_connection() as connection, connection.cursor() as cursor:
         cursor.execute("""
@@ -43,9 +68,22 @@ def create_tables_players_and_season_players():
     create_season_player_table()
 
 
+def create_tables_team_and_player_team():
+    create_teams_table()
+    create_player_team_table()
+
+
 def drop_tables_players_and_season_players():
     with get_db_connection() as connection, connection.cursor() as cursor:
         cursor.execute('''
             DROP TABLE IF EXISTS season_players;
             DROP TABLE IF EXISTS players;
+        ''')
+
+
+def drop_tables_team_and_player_team():
+    with get_db_connection() as connection, connection.cursor() as cursor:
+        cursor.execute('''
+            DROP TABLE IF EXISTS player_teams;
+            DROP TABLE IF EXISTS teams;
         ''')
