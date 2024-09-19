@@ -25,3 +25,14 @@ def get_team_by_id(team_id: int) -> Team or None:
         if not target_answer:
             return
         return Team(**target_answer)
+
+
+def delete_team(team_id: int) -> int:
+    with get_db_connection() as connection, connection.cursor() as cursor:
+        cursor.execute("""
+        DELETE FROM teams
+        WHERE id=%s;
+        """, (team_id,))
+        row_effected = cursor.rowcount
+        connection.commit()
+    return row_effected

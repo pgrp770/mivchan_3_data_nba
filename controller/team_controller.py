@@ -4,6 +4,7 @@ from toolz import *
 from flask import Blueprint, jsonify, request
 from repository.player_repository import *
 from repository.season_player_repository import *
+from repository.team_repository import delete_team
 from utils.players_controller_utils import filter_players_by_season_and_position
 from utils.team_controller_utils import check_5_positions, create_team_with_players
 
@@ -21,3 +22,9 @@ def create_team():
     team_name = new_team["team_name"]
     create_team_with_players(team_name, players_id)
     return jsonify({}), 200
+
+
+@teams_blueprint.route("/<int:team_id>", methods=["DELETE"])
+def delete_team_api(team_id):
+    delete_team(team_id)
+    return {"message": "you have successfully deleted user"}, 204

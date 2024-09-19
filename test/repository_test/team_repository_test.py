@@ -21,3 +21,9 @@ def test_create_team():
     new_team = Team("test")
     new_id = create_team(new_team)
     assert get_team_by_id(new_id).id == new_id
+
+
+def test_delete_team():
+    result = delete_team(1)
+    check_user_answer = get_team_by_id(1)
+    assert not check_user_answer
