@@ -29,8 +29,8 @@ def create_season_player_table():
                position VARCHAR(100) NOT NULL,
                games INT NOT NULL,
                points INT NOT NULL,
-               twoPercent REAL NOT NULL,
-               threePercent REAL NOT NULL,
+               twoPercent REAL,
+               threePercent REAL,
                art REAL NOT NULL,
                FOREIGN KEY (player_id) REFERENCES players(id) ON DELETE CASCADE
            )   

@@ -23,6 +23,12 @@ def test_create_answer():
     assert get_player_by_id(new_id).id == new_id
 
 
+def test_get_all_players():
+    result = get_all_players()
+    assert isinstance(result, list)
+    assert all(isinstance(player, Player) for player in result)
+
+
 def test_get_id_by_name():
     result = get_id_by_name("tst")
     assert result or not result

@@ -31,3 +31,9 @@ def test_create_answer():
     )
     new_id = create_player_season(new_player)
     assert get_player_season_by_id(new_id).id == new_id
+
+
+def test_get_all_season_players():
+    result = get_all_season_players()
+    assert isinstance(result, list)
+    assert all(isinstance(season_player, SeasonPlayer) for season_player in result)

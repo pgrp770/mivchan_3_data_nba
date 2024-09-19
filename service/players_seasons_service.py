@@ -9,6 +9,8 @@ from repository.season_player_repository import *
 
 
 def calculate_art(assists: int, turnover: float) -> float:
+    if turnover == 0:
+        return 0
     return assists / turnover
 
 

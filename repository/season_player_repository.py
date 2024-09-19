@@ -44,3 +44,11 @@ def get_player_season_by_id(season_players_id: int) -> SeasonPlayer or None:
         if not target_answer:
             return
         return SeasonPlayer(**target_answer)
+
+
+def get_all_season_players() -> List[SeasonPlayer]:
+    with get_db_connection() as connection, connection.cursor() as cursor:
+        cursor.execute("""
+           SELECT * FROM season_players
+           """)
+        return [SeasonPlayer(**season_player) for season_player in cursor.fetchall()]

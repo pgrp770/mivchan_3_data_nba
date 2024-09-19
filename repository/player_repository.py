@@ -42,6 +42,14 @@ def get_id_by_name(name) -> Player or None:
         return Player(**target_answer)
 
 
+def get_all_players() -> List[Player]:
+    with get_db_connection() as connection, connection.cursor() as cursor:
+        cursor.execute("""
+           SELECT * FROM players
+           """)
+        return [Player(**player) for player in cursor.fetchall()]
+
+
 def get_player_by_id(player_id: int) -> Player or None:
     with get_db_connection() as connection, connection.cursor() as cursor:
         cursor.execute("""
