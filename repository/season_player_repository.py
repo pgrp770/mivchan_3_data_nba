@@ -4,7 +4,7 @@ from model.season_player_model import *
 from repository.database_repository import get_db_connection
 
 
-def create_player(season_player: SeasonPlayer) -> int:
+def create_player_season(season_player: SeasonPlayer) -> int:
     with get_db_connection() as connection, connection.cursor() as cursor:
         cursor.execute("""
         INSERT INTO season_players(
@@ -34,7 +34,7 @@ def create_player(season_player: SeasonPlayer) -> int:
         return player_id
 
 
-def get_player_by_id(season_players_id: int) -> SeasonPlayer or None:
+def get_player_season_by_id(season_players_id: int) -> SeasonPlayer or None:
     with get_db_connection() as connection, connection.cursor() as cursor:
         cursor.execute("""
         SELECT * FROM season_players

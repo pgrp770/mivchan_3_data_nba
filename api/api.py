@@ -2,7 +2,7 @@ import requests
 
 
 def get_players_by_season(year: int) -> list:
-    url = f"http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataAdvancedPlayoffs/season/{year}"
+    url = f"http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?pageSize=1000&season={year}"
     response = requests.get(url)
     return response.json()
 

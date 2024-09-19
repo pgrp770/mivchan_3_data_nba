@@ -29,5 +29,5 @@ def test_create_answer():
         0,
         0
     )
-    new_id = create_player(new_player)
-    assert get_player_by_id(new_id).id == new_id
+    new_id = create_player_season(new_player)
+    assert get_player_season_by_id(new_id).id == new_id

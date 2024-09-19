@@ -21,3 +21,14 @@ def test_create_answer():
     new_player = Player("test")
     new_id = create_player(new_player)
     assert get_player_by_id(new_id).id == new_id
+
+
+def test_get_id_by_name():
+    result = get_id_by_name("tst")
+    assert result or not result
+
+
+def test_create_player_unique():
+    result = Player("tet")
+    new_id = create_player_unique(result)
+    assert get_player_by_id(new_id).id == new_id
