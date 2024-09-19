@@ -2,9 +2,9 @@ import requests
 
 
 def get_players_by_season(year: int) -> list:
-    url = f"https://nba-stats-db.herokuapp.com/api/playerdata/season/{year}/"
+    url = f"http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataAdvancedPlayoffs/season/{year}"
     response = requests.get(url)
-    return response.json()["results"]
+    return response.json()
 
 
 def get_players_for_all_season() -> list:
