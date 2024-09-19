@@ -31,7 +31,8 @@ def create_season_player_table():
                points INT NOT NULL,
                twoPercent REAL NOT NULL,
                threePercent REAL NOT NULL,
-               art REAL NOT NULL
+               art REAL NOT NULL,
+               FOREIGN KEY (player_id) REFERENCES players(id) ON DELETE CASCADE
            )   
            """)
         connection.commit()
@@ -40,3 +41,11 @@ def create_season_player_table():
 def create_tables_players_and_season_players():
     create_player_table()
     create_season_player_table()
+
+
+def drop_tables_players_and_season_players():
+    with get_db_connection() as connection, connection.cursor() as cursor:
+        cursor.execute('''
+            DROP TABLE IF EXISTS season_players;
+            DROP TABLE IF EXISTS players;
+        ''')

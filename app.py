@@ -6,4 +6,5 @@ app = Flask(__name__)
 
 if __name__ == "__main__":
     create_tables_players_and_season_players()
-    app.run()
+    # drop_tables_players_and_season_players()
+    app.run(debug=True)
