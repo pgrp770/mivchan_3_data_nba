@@ -27,3 +27,8 @@ def create_team_with_players(team_name, players_id):
     team_id = create_team(Team(team_name))
     for player_id in players_id:
         create_team_player(team_id, player_id)
+
+
+def update_team_with_players(players_id, team_id):
+    for player_id in players_id:
+        create_team_player(team_id, player_id)

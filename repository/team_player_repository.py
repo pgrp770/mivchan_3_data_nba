@@ -13,3 +13,5 @@ def create_team_player(team_id, player_id) -> int:
         team_player_id = cursor.fetchone()["id"]
         connection.commit()
         return team_player_id
+
+

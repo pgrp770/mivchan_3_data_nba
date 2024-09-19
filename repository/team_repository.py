@@ -15,6 +15,17 @@ def create_team(team: Team) -> int:
         return team_id
 
 
+def create_team_with_id(team: Team) -> int:
+    with get_db_connection() as connection, connection.cursor() as cursor:
+        cursor.execute("""
+        INSERT INTO teams(name, id)
+        VALUES (%s, %s) RETURNING ID
+        """, (team.name, team.id))
+        team_id = cursor.fetchone()["id"]
+        connection.commit()
+        return team_id
+
+
 def get_team_by_id(team_id: int) -> Team or None:
     with get_db_connection() as connection, connection.cursor() as cursor:
         cursor.execute("""

@@ -12,3 +12,7 @@ def test_check_5_positions():
 
 def test_create_team_with_players():
     create_team_with_players("asdf", [1, 2, 3, 5, 10])
+
+
+def test_update_team_with_players():
+    update_team_with_players("asdf", [1, 2, 3, 5, 10], 1)
