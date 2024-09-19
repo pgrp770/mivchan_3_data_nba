@@ -12,5 +12,4 @@ class SeasonPlayer:
     twoPercent: float
     threePercent: float
     art: float
-    ppg_ratio: float
     id: int = None
