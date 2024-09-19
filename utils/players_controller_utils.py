@@ -1,3 +1,4 @@
+from dataclasses import asdict
 from typing import List
 
 from toolz import *
@@ -18,6 +19,8 @@ def filter_by_season(season, li):
         )
     return li
 
+def get_ppg(player_position, player_points):
+    pass
 
 def filter_players_by_season_and_position(position: str, season: str or None = None) -> List[Player]:
     all_player = get_all_players()
@@ -26,14 +29,12 @@ def filter_players_by_season_and_position(position: str, season: str or None = N
         all_season_players,
         partial(filter, lambda player: player.position == position),
         filter_by_season(season),
-        partial(map, lambda player: player.player_id),
-        set,
+        partial(map, lambda player: {
+            **asdict(player),
+            "name": next((p.name for p in all_player if p.id == player.player_id), None)
+        }),
         list
     )
-    filter_player = pipe(
-        all_player,
-        partial(filter, lambda player: player.id in season_player_filter),
-        list
-    )
-    return filter_player
+
+    return season_player_filter
 

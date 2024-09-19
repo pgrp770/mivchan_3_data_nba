@@ -17,5 +17,5 @@ def get_all():
     season = request.args.get("season")
 
     filtered_list = filter_players_by_season_and_position(position, season)
-    result = [asdict(player) for player in filtered_list]
-    return jsonify(result), 200
+
+    return jsonify(filtered_list), 200
